@@ -1,0 +1,41 @@
+{
+  "name": "component-license",
+  "version": "0.0.0",
+  "description": "Find component licenses",
+  "keywords": [
+    "component",
+    "license",
+    "legal",
+    "audit"
+  ],
+  "author": "Stephen Mathieson <me@stephenmathieson.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stephenmathieson/component-license.git"
+  },
+  "dependencies": {
+    "superagent": "~0.15.4",
+    "license-from-readme": "~0.1.0",
+    "commander": "~2.0.0",
+    "once": "~1.2.0",
+    "archy": "0.0.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "should": "~1.2.2"
+  },
+  "main": "index",
+  "bin": {
+    "component-license": "bin/component-license"
+  },
+  "bugs": {
+    "url": "https://github.com/stephenmathieson/component-license/issues"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  }
+}

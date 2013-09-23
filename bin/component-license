@@ -1,0 +1,43 @@
+#!/usr/bin/env node
+
+var program = require('commander'),
+    archy = require('archy'),
+    licenses = require('..');
+
+program
+  .version(require('../package.json').version)
+  // TODO
+  // .option('--csv', 'output in csv format', Boolean)
+  .parse(process.argv);
+
+program.name = 'component-license';
+
+
+var repo, version;
+
+if (program.args.length) {
+  //
+  // $ component-license stephenmathieson/rndid
+  // $ component-license stephenmathieson/rndid master
+  //
+  repo = program.args[0];
+  version = program.args[1] || '*';
+} else {
+  //
+  // $ component-license
+  //
+  var json = require(process.cwd() + '/component.json');
+  repo = json.repo;
+  version = json.version || '*';
+}
+
+licenses(repo, version, function (err, map) {
+  if (err) throw err;
+  Object.keys(map).forEach(function (repo) {
+    var str = archy({
+      label: repo,
+      nodes: map[repo]
+    });
+    console.log(str);
+  });
+});
